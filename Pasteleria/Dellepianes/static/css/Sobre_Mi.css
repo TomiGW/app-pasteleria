@@ -1,0 +1,19 @@
+.Fondo{
+	width: 400;
+	height: 400;
+	border-radius: 50%;
+}
+
+.historia{
+	background-color: #FFEBEB;
+	margin: auto;
+	width: 1000px;
+	height: 500px;
+	
+}
+
+.sobre_mi{
+	font-family: 'Dosis Bold';
+	font-size: 17px;
+	color: #5a5a5a;
+}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	
+	<div class="container-fluid">
+		<div class="text-center">
+			<p>Dellepiane's  Bake  House</p>
+		</div>
+
+		<div class="imagen1"> 
+			<img src="{% static 'Imagenes/Dulce1.png' %}">
+		</div>
+
+		<div class="imagen2">
+			<img src="{% static 'Imagenes/Dulce2.png' %}">
+		</div>
+
+		<div class= "Principal">
+			<div class="row wor">
+				<div class="col-sm-12 text-center">
+					
+					<b> Diseño de pasteles </b>
+					<br>
+					<b> para bodas y </b>
+					<br>
+					<b> celebraciones </b>
+					<br>
+					<br>
+					
+					<a style="color: black;" href="{% url 'Pedidos' %}">
+						<button class="boton" >Hacer un pedido</button>
+					</a>
+				</div>
+			</div>
+		</div>		
+	</div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load set_var %}
+{% block content %}
+<div class="caja">
+	{% if user.is_authenticated and user.is_superuser %}
+		<a href="{% url 'EditarProducto' pk=producto.pk %}"> <button class="Boton-Inicio"> Edita el producto</button>></a>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
+	{%endif%}
+	
+	<div style="padding: 20px;">
+		{%set i = 0%}
+		{%for imagenes in imagenes%}
+			{% if imagenes.Producto_id == producto.id and i < 1%}
+					{%set i = 1 %}
+					<img src="{{imagenes.Imagen.url}}" class="imgproducto">
+	 		{% endif %}
+		{% endfor %}
+	</div>
+
+	<div class="producto_info">
+		<p>{{producto.Nombre}}</p>
+		<p>{{producto.Tipo_de_producto}}</p>
+		<p>{{producto.Descripcion}}</p>
+		<p>{{producto.Precio}}</p>	
+	</div>
+	
+</div>
+{% endblock %}

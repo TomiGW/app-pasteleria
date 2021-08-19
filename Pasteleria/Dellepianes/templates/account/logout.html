@@ -1,0 +1,36 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Cerrar sesion" %}{% endblock %}
+
+{% block content %}
+	<div class="container-fluid">
+
+		<h3 class="h3" id="head_banner">{% trans "Cerrar sesion" %}</h3>
+
+		<p class="confirm_logout_info">
+			{% trans 'Estas seguro/a de que queres cerrar sesion?' %}
+		</p>
+
+		<form class="container-fluid text-center" id="logout_form" method="post" action="{% url 'account_logout' %}">
+			{% csrf_token %}
+
+			{% if redirect_field_value %}
+
+				<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+
+			{% endif %}
+		  
+			<button  class="btn btn-outline-success" type="submit">
+				{% trans 'Cerrar sesion' %}
+			</button>
+		  	
+		  	<a class="btn btn-outline-danger" id="custom_logout_no" href="{% url 'Home' %}">
+		  		{% trans 'No' %}
+		  	</a>
+		</form>
+
+	</div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+li{
+	font-family: 'Dosis SemiBold';
+ 	font-size: 22px;
+	display: inline;
+	color: rgba(0,0,0,0.5);
+}
+
+li a {
+	font-family: 'Dosis SemiBold';
+ 	font-size: 22px;
+	padding: 15;
+	color: rgba(0,0,0,0.5);
+}
+
+
+
+li a:hover{
+	font-family: 'Dosis SemiBold';
+ 	font-size: 22px;
+	color: #000000;
+}
+
+
+.btn a, .btn a:hover {
+	color: white;
+	text-decoration: none ;
+}
+
+.Icon{
+	width: 30;
+	height: 30;
+	border-radius: 30;
+	margin-left: 15;
+
+}
+
+a:link, a:visited, a:active {
+    text-decoration:none;
+}
+
+a{
+	text-decoration: none;
+}

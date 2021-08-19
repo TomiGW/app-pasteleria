@@ -1,0 +1,58 @@
+hr{
+	border-top: 3px solid black;
+}
+
+ul{
+	text-align: center;
+	padding-top: 10;
+}
+
+li{
+	font-family: Arial;
+ 	font-size: 20;
+	display: inline;
+}
+
+li a {
+	font-family: Arial;
+ 	font-size: 20;
+	color: #000000;
+	padding: 15;
+}
+
+li a:hover{
+	font-family: Arial;
+ 	font-size: 20;
+	color: rgba(0,0,0,0.5);
+}
+
+.container-fluid {
+	height: 100vh;
+	background-color: white;
+	justify-content: center;
+	align-items: center;
+	align-self: center;
+}
+
+.card {
+	width: 100%;
+}
+
+.social-container {
+	flex-direction: column;
+	justify-content: center;
+}
+
+
+.btn a, .btn a:hover {
+	color: white;
+	text-decoration: none ;
+}
+
+.Icon{
+	width: 30;
+	height: 30;
+	border-radius: 30;
+	margin-left: 15;
+
+}

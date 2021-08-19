@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load static %}
+{% block head_links %} 
+
+<title>Dellepianes</title>
+
+{% endblock %}
+
+{% block head_title %}{% trans "Sign In" %} {% endblock %}
+
+{% block content %}
+	<div class="container-fluid">
+
+		<div class="Imagen1"> 
+			<img src="{% static 'Imagenes/Dulce1.png' %}">
+		</div>
+
+		<div class="Imagen2">
+			<img src="{% static 'Imagenes/Dulce2.png' %}">
+		</div>
+
+		<div class="RecuadroLogin">
+
+			<div class="row wor">
+				<div class="Tablero">
+					<h3 class="h3 text-center" id="head_banner">
+						{% trans "Sign In" %}
+					</h3>
+
+					<form class="text-center" id="login_form" method="POST" action="{% url 'account_login' %}">
+						{% csrf_token %}
+						<p>
+							{{ form.login }}
+						</p>
+						<p>
+							{{ form.password }}
+						</p>
+
+						<p>
+							Recordar contraseña?
+							{{ form.remember }}
+						</p>
+
+						{% if redirect_field_value %}
+						  
+							<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+						  
+						{% endif %}
+						  
+						<button class="button blue medium radius" type="submit"> 
+							{% trans "Iniciar sesion" %}
+						</button>
+						
+						<br>
+
+						No recordas tu contraseña? Recuperala haciendo click <a href="{% url 'account_reset_password' %}"> aqui </a>
+						<br>
+
+					
+						Aun no tenes cuenta? Registrate haciendo click <a href="{%url 'account_signup'%}"> aqui </a>
+
+					
+					</form>	
+					
+					<hr style="width: 356px; border-width: 1px;">
+
+					{% load account socialaccount %}
+
+					{% get_providers as socialaccount_providers %}
+					
+					<ul class="social_providers_list">
+						
+						{% for provider in socialaccount_providers %}
+						<div class="text-center">
+							<button class="prueba">
+								<a title="{{provider.name}}" href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">
+									<span class="icon-google"></span>
+								 	<i class="fa fa-{{provider.name}}" id="social_icon"></i>{% trans "Inicia sesion con Google"%}
+								 </a>
+							 </button>
+						</div>
+						{% endfor %}
+					</ul>
+					<hr style="width: 356px; border-width: 1px;"> 
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

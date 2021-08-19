@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+	<form method="POST" enctype='multipart/form-data'> {% csrf_token %}
+
+		{{productof.Nombre}}
+		{{productof.Descripcion}}
+		{{productof.Tipo_de_producto}}
+		{{productof.Precio}}
+
+		<div>
+			{{imagenform.Imagen}}
+		</div>
+		<button type="submit" name= "Enviar " class="save btn btn-default">Save</button>
+	</form>
+{% endblock %}

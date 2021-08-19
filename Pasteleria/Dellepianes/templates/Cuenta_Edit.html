@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<h2>Mi Cuenta</h2>
+	<form method="POST" >
+	{% csrf_token %}
+		<p>Ingrese su nombre de usuario: {{ user_form.first_name }}</p>
+
+		<p>Ingrese su DNi: 
+			<br>{{ detalle_form.DNI }} 
+		</p>
+		
+		<p> Ingrese su Email: 
+			<br>
+			{{ detalle_form.Mail }}
+		</p>
+		
+		<p>Ingrese su numero de telefono: {{ detalle_form.Telefono }}</p>
+		
+		<button type="submit" class="save btn btn-default">Guardar</button>
+	</form>
+{% endblock %}

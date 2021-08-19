@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% load static%}
+
+{% block head_title %}{% trans "Registrate!" %}{% endblock %}
+{% block head_links %} 
+
+<title>Dellepianes</title>
+
+{% endblock %}
+
+{% block content %}
+	<div class="container-fluid">
+
+		<div class="Imagen1"> 
+			<img src="{% static 'Imagenes/Dulce1.png' %}">
+		</div>
+
+		<div class="Imagen2">
+			<img src="{% static 'Imagenes/Dulce2.png' %}">
+		</div>
+
+		<div class="RecuadroLogin">
+			<div class="row wor">
+				<div class="Tablero">
+					<h3 class="h3 text-center" id="head_banner">{% trans "Registrate" %}</h3>
+
+					<p class="exist_account_info text-center">
+						{% blocktrans %}
+							Ya tenes una cuenta en Dellepianes? Entonces 
+							<a style="color: blue;" href="{{ login_url }}">Inicia sesion</a>.
+						{% endblocktrans %}
+					</p>
+
+					<form class="" id="signup_form" method="post" action="{% url 'account_signup' %}">
+						{% csrf_token %}
+
+						{{ form.as_p }}
+
+						{% if redirect_field_value %}
+						<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+						  
+						{% endif %}
+						  
+						<button class="Boton-Inicio text-center" type="submit">
+							{% trans "Registrate" %}
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,96 @@
+ <!DOCTYPE html>
+<html lang="es">
+	<head>
+
+		<meta charset="utf-8">
+
+		<title> Gracias por tu pedido </title>
+
+		{% load cart_tags %}
+
+		<style>
+			#order{
+				font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+				border-collapse: collapse;
+				width: 100%
+			}
+
+			#order td, #order th{
+				border: 1px solid #ddd;
+				padding: 8px;
+			}	
+
+			#order tr:nth-child(even){
+				background-color: #f2f2f2;
+			}
+
+			#order th:hover{
+				background-color: #ddd;
+			}
+
+			#order th{
+				padding-top: 12px;
+				padding-bottom: 12px;
+				text-align: left;
+				background-color: #1b1e21;
+				color: white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<p>Hola {{username}}. </p>
+		<p>Muchas gracias por tu pedido, a continuacion adjuntamos toda la informacion del mismo.</p>
+		<h2>Informacion del pedido</h2>
+
+		<table id="pedido">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Total</th>
+					<th>Fecha</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{pedido.id}}</td>
+					<td>{{pedido.tota|money_format:"$"}}</td>
+					<td>{{pedido.creado_desde|date:'d/m/Y H:i'}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr />
+
+		<h2>Lineas del pedido</h2>
+		<table id="pedido_lines">
+			<thead>
+				<tr>
+					<th>Producto</th>
+					<th>Cantidad</th>
+					<th>Precio/u</th>
+					<th>Precio total</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for pedido_line in pedido_lines %}
+				<tr class="text-center">
+					<td>{{pedido_line.producto.Nombre}}</td>
+					<td>{{pedido_line.cantidad}}</td>
+					<td>{{pedido_line.producto.Precio|money_format:"$"}}</td>
+					<td>{{pedido_line.producto.Precio|multiply:pedido_line.cantidad|money_format:"$ "}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>			
+		</table>
+	</body>	
+</html>
+
+
+
+
+
+
+
+
+
+

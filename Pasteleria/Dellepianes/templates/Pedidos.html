@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load set_var %}
+{% load cart_tags %}
+{% block content %}
+	<div class="caja ">
+
+		<div class="col-3" style="float: right; padding: 20px;">
+			{% include "widget.html" %}
+
+			{% if user.is_authenticated and user.is_superuser %}
+				<a href="{% url 'AñadirProducto' %}"> 
+					<button class="btn btn-success"> Añadir un nuevo producto</button>
+				</a>
+			{%endif%}
+		</div>
+
+		<section class="Tablero_Transparente row">
+			{% for producto in producto%}
+				<div class="card productos"	>
+					<a style="color: black;" href="{% url 'Producto' pk=producto.pk %}">
+						{%set i = 0%}
+						{%for imagenes in imagenes%}
+							{% if imagenes.Producto_id == producto.id and i < 1%}
+									{%set i = 1 %}
+									<img src="{{imagenes.Imagen.url}}" class="card-img-top">
+	 						{% endif %}
+						{% endfor %}
+						<div class=" card-body">
+							<h2 class="card-title"> {{producto.Nombre}} </h2>
+							<h4 class="card-text"> {{producto.Descripcion}} </h4>
+							<h4 class="card-text"> $ {{producto.Precio}} </h4>
+						</div>	
+					</a>
+
+					<div class="card-footer text-center">
+						<a href="{% url 'cart:add_producto' producto.id %}" class="btn btn-success"> Añadir al carrito </a>		
+					</div>
+
+				</div>
+			{% endfor %}		
+		</section>
+	</div>
+{% endblock %}

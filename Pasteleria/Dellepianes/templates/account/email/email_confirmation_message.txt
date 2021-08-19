@@ -1,0 +1,19 @@
+{% load account %}
+{% user_display user as user_display %}
+{% load i18n %}
+
+
+
+Confirma tu cuenta de correo de Dellepiane:
+
+	Gracias por unirte a Dellepiane!!
+	
+	Porfavor confirma que tu cuenta de correo es correcta, para continuar haz click en el siguiente link para confirmar tu cuenta.
+	
+	
+	{{ activate_url }}
+	
+	Te deseamos lo mejor, el equipo de Dellepiane
+	
+	
+
